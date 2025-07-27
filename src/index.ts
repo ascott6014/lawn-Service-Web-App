@@ -6,6 +6,7 @@ import { registerUser, login } from './controllers/UserController';
 import { handleAddService, handleGetServicesByUserId } from './controllers/ServiceController';
 import { handleAddPropery } from './controllers/PropertyController';
 import { handleAddJob, handleGetJobsByUserId } from './controllers/JobController';
+import { handleAddJobService } from './controllers/JobServiceController';
 
 const app: Express = express();
 const { PORT, COOKIE_SECRET } = process.env;
@@ -29,14 +30,15 @@ app.use(express.json());
 
 // post (creation)
 app.post("/api/users", registerUser);
-app.post("api/login", login);
-app.post("api/contractors/services", handleAddService);
-app.post("api/users/properties", handleAddPropery);
-app.post("api/users/jobs", handleAddJob);
+app.post("/api/login", login);
+app.post("/api/contractors/services", handleAddService);
+app.post("/api/users/properties", handleAddPropery);
+app.post("/api/users/jobs", handleAddJob);
+app.post("/api/users/jobs/jobServices", handleAddJobService);
 
 // get(viewing)
-app.get("api/contractors/:targetUserId/services", handleGetServicesByUserId);
-app.get("api/users/jobs", handleGetJobsByUserId);
+app.get("/api/contractors/:targetUserId/services", handleGetServicesByUserId);
+app.get("/api/users/jobs", handleGetJobsByUserId);
 
 app.listen(PORT, () => {
     console.log(`Listening at http://localhost:${PORT}`);

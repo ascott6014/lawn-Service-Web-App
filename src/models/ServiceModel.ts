@@ -35,4 +35,9 @@ async function getServicesByUserId(userId: string): Promise <Service[] | null> {
     return services;
 }
 
-export { addService ,getServicesByUserId }
+async function getServiceById(serviceId: string): Promise<Service | null> {
+    const service = await serviceRepository.findOne({where: {serviceId}});
+    return service;
+}
+
+export { addService ,getServicesByUserId, getServiceById }

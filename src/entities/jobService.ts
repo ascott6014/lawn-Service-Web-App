@@ -7,8 +7,8 @@ export class JobService {
     @PrimaryGeneratedColumn('uuid')
     jobServiceID: string;
 
-    @Column()
-    status: string; // Enum
+    @Column({default: false})
+    isComplete: boolean;
 
     // @Column()
     // jobID: string; // Foreign key

@@ -33,4 +33,9 @@ async function getJobsByUserId(userId: string): Promise <Job[] | null> {
     return jobs;
 }
 
-export { addJob, getJobsByUserId }
+async function getJobById(jobId: string): Promise <Job | null> {
+    const job = await jobRepository.findOne({where: {jobId}});
+    return job;
+}
+
+export { addJob, getJobsByUserId, getJobById }
