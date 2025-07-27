@@ -4,5 +4,5 @@ type  NewUserRequest = {
 }
 
 type targerUserParams = {
-    userId: string;
+    targetUserId: string;
 }

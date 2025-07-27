@@ -31,8 +31,8 @@ async function handleAddService(req: Request, res: Response): Promise<void> {
 }
 
 async function handleGetServicesByUserId(req: Request, res: Response): Promise<void> {
-    const { userId } = req.body as targerUserParams;
-    const user = await getUserById(userId);
+    const { targetUserId } = req.params as targerUserParams;
+    const user = await getUserById(targetUserId);
 
     if(!user) {
         res.sendStatus(404); // user not found
@@ -45,7 +45,7 @@ async function handleGetServicesByUserId(req: Request, res: Response): Promise<v
     }
     
     try {
-        const services = await getServicesByUserId(userId);
+        const services = await getServicesByUserId(targetUserId);
         res.status(200).json(services)
     } catch (err) {
         console.error(err);

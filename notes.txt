@@ -3,8 +3,8 @@ add feature to add property: user must be logged in. done
 add feature to view properties: done
 add feature to view contrator services: done
 
-add feature to request a job for a propery: in progress
-add feature to view jobs
+add feature to request a job for a propery: done
+add feature to view jobs: in progress
 
 contractors...
 add feature to add service: done

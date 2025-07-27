@@ -36,4 +36,9 @@ async function getPropertiesByUserId(userId: string): Promise<Property[] | null>
     return properties;
 }
 
-export { addProperty, getPropertiesByUserId }
+async function getPropertyById(propertyId: string): Promise<Property | null> {
+    const property = await propertyRepository.findOne({where: {propertyId}});
+    return property;
+}
+
+export { addProperty, getPropertiesByUserId, getPropertyById }

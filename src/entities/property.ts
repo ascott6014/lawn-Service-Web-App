@@ -1,5 +1,6 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, Relation } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, Relation, OneToMany } from "typeorm";
 import { User } from "./user";
+import { Job } from "./job";
 
 @Entity()
 export class Property {
@@ -26,4 +27,7 @@ export class Property {
 
     @ManyToOne(() => User, (user) => user.properties)
     user: Relation<User>;
+
+    @OneToMany(() => Job, (job) => job.property)
+    jobs: Relation<Job>[];
 }

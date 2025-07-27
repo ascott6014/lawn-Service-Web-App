@@ -18,11 +18,15 @@ if (!process.env.DATABASE_NAME || typeof process.env.DATABASE_NAME !== 'string')
 // }
 import { User } from './entities/user';
 import { Service } from './entities/service';
+import { Property } from './entities/property';
+import { Job } from './entities/job';
+import { JobService } from './entities/jobService';
+import { Invoice } from './entities/invoice';
 
 export const AppDataSource = new DataSource({
   synchronize: true,
   logging: false,
-  entities: [User, Service],
+  entities: [User, Service, Property, Job, JobService, Invoice],
   type: 'sqlite',
   database: process.env.DATABASE_NAME,
 });
