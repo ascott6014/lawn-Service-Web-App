@@ -1,4 +1,6 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToOne, Relation } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany, Relation } from 'typeorm';
+import { Service } from './service';
+import { Property } from './property';
 
 
 @Entity()
@@ -16,7 +18,7 @@ export class User {
     passwordHash: string;
 
     @Column()
-    contractor: boolean;
+    isContractor: boolean;
 
     @Column({ unique: true })
     phone: string;
@@ -32,4 +34,10 @@ export class User {
 
     @Column()
     zip: string;
+
+    @OneToMany(() => Service, (service) => service.user)
+    services: Relation<Service>[];
+
+    @OneToMany(() => Property, (property) => property.user)
+    properties: Relation<Property>[];
 }

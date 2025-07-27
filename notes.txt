@@ -1,0 +1,11 @@
+clients ...
+add feature to add property: user must be logged in. done
+add feature to view properties: in progress
+add feature to request a job for a propery, listing all job services by service id;
+add feature to view jobs
+
+contractors...
+add feature to view job and job services
+add feature to update job;
+add feature to generate invoice based on job and job services, grabbing service price for each service and comming up with a grand total
+

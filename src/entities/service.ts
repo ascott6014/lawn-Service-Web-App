@@ -1,12 +1,13 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm'
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, Relation } from 'typeorm'
+import { User } from './user';
 
 @Entity()
 export class Service {
     @PrimaryGeneratedColumn('uuid')
-    serviceID: string;
+    serviceId: string;
 
-    @Column()
-    contractorID: string; // Foreign key
+    // @Column()
+    // userId: string; // Foreign key
 
     @Column()
     name: string;
@@ -16,4 +17,7 @@ export class Service {
 
     @Column()
     price: number;
+
+    @ManyToOne(() => User, (user) => user.services)
+    user: Relation<User>;
 }

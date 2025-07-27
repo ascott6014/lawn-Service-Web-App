@@ -1,8 +1,8 @@
 import './config'; // Load environment variables
-import 'express-async-errors';
 import express, {Express} from 'express';
 import session from 'express-session';
 import connectSqlite3 from 'connect-sqlite3';
+import { registerUser, login, handleAddService, handleGetServicesByUserId, handleAddPropery } from './controllers/UserController';
 
 const app: Express = express();
 const { PORT, COOKIE_SECRET } = process.env;
@@ -23,6 +23,15 @@ app.use(
 app.use(express.json());
 
 // Implement endpoints here
+
+// post (creation)
+app.post("/api/users", registerUser);
+app.post("api/login", login);
+app.post("api/contractors/services", handleAddService);
+app.post("api/users/properties", handleAddPropery);
+
+// get(viewing)
+app.get("api/contractors/services", handleGetServicesByUserId);
 
 app.listen(PORT, () => {
     console.log(`Listening at http://localhost:${PORT}`);

@@ -1,12 +1,13 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, Relation } from "typeorm";
+import { User } from "./user";
 
 @Entity()
 export class Property {
     @PrimaryGeneratedColumn('uuid')
     propertyID: string;
 
-    @Column()
-    clientID: string; // foriegn key
+    // @Column()
+    // userId: string; // foriegn key
 
     @Column()
     streetAddress: string;
@@ -23,4 +24,6 @@ export class Property {
     @Column()
     lawnSize: number;
 
+    @ManyToOne(() => User, (user) => user.properties)
+    user: Relation<User>;
 }
