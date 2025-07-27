@@ -1,6 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany, Relation } from 'typeorm';
 import { Service } from './service';
 import { Property } from './property';
+import { Job } from './job';
 
 
 @Entity()
@@ -40,4 +41,7 @@ export class User {
 
     @OneToMany(() => Property, (property) => property.user)
     properties: Relation<Property>[];
+
+    @OneToMany(() => Job, (job) => job.user)
+    jobs: Relation<Job>[];
 }

@@ -1,4 +1,6 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, Relation, OneToMany } from 'typeorm';
+import { User } from './user';
+import { JobService } from './jobService';
 
 
 @Entity()
@@ -17,4 +19,11 @@ export class Job {
 
     @Column()
     totalPrice: number;
+
+    @ManyToOne(() => User, (user) => user.jobs)
+    user: Relation<User>;
+
+    @OneToMany(() => JobService, (jobService) => jobService.job)
+    jobService: Relation<JobService>[];
+    
 }

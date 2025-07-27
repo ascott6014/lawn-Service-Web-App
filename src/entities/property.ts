@@ -4,7 +4,7 @@ import { User } from "./user";
 @Entity()
 export class Property {
     @PrimaryGeneratedColumn('uuid')
-    propertyID: string;
+    propertyId: string;
 
     // @Column()
     // userId: string; // foriegn key

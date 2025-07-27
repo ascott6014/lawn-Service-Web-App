@@ -2,7 +2,9 @@ import './config'; // Load environment variables
 import express, {Express} from 'express';
 import session from 'express-session';
 import connectSqlite3 from 'connect-sqlite3';
-import { registerUser, login, handleAddService, handleGetServicesByUserId, handleAddPropery } from './controllers/UserController';
+import { registerUser, login } from './controllers/UserController';
+import { handleAddService, handleGetServicesByUserId } from './controllers/ServiceController';
+import { handleAddPropery } from './controllers/PropertyController';
 
 const app: Express = express();
 const { PORT, COOKIE_SECRET } = process.env;
