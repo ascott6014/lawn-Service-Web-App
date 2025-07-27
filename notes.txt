@@ -7,7 +7,7 @@ add feature to request a job for a propery: done
 add feature to view jobs: done
 
 add feature to add job services: done
-add feature to view job services for job: in progress
+add feature to view job services for job: done
 
 contractors...
 add feature to add service: done

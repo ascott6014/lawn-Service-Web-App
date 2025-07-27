@@ -17,4 +17,22 @@ async function addJobService(jobId: string, serviceId: string): Promise <JobServ
     return newJobService;
 }
 
-export { addJobService }
+async function getJobServicesByJobId(jobId: string): Promise <JobService[] | null> {
+    const jobServices = jobServiceRepository
+                        .createQueryBuilder("jobService")
+                        .where({job: {jobId}})
+                        .leftJoin("jobService.job", "job")
+                        .leftJoin("jobService.service", "service")
+                        .leftJoin("service.user", "user")
+                        .select([
+                            "jobService.jobServiceId",
+                            "jobService.isComplete",
+                            "service.description",
+                            "service.price",
+                            "user.name",
+                            "user.phone"
+                        ])
+                        .getMany();
+    return jobServices;
+}
+export { addJobService, getJobServicesByJobId }
